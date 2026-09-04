@@ -285,6 +285,11 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--slate-800);
 }
 
+.nav-cv-btn {
+  padding: 0.6rem 1.15rem;
+  font-size: 0.875rem;
+}
+
 .theme-toggle-btn {
   background: transparent;
   border: 1px solid var(--slate-300);
@@ -1598,3 +1603,57 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.35rem 0.65rem;
   }
 }
+
+@media (max-width: 1080px) and (min-width: 769px) {
+  .nav-links {
+    gap: 1.1rem;
+  }
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  .nav-actions .btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Download CV Feedback Toast */
+.download-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--navy-deep);
+  color: #ffffff;
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 4px solid var(--medical-blue);
+}
+
+.download-toast svg {
+  color: var(--medical-blue);
+  flex-shrink: 0;
+}
+
+.download-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+[data-theme="dark"] .download-toast {
+  background: var(--slate-800);
+  border-color: var(--medical-blue);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
