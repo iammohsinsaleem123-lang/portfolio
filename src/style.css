@@ -164,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
   height: 76px;
 }
 
@@ -205,7 +206,10 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .nav-link {
@@ -215,6 +219,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition);
   position: relative;
   padding: 0.5rem 0;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -235,7 +240,15 @@ h1, h2, h3, h4, h5, h6 {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
+  margin-left: 2rem;
+  padding-left: 1.75rem;
+  border-left: 1px solid var(--slate-200);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .nav-actions {
+  border-left-color: var(--navy-border);
 }
 
 .btn {
@@ -1561,9 +1574,30 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-actions {
+    margin-left: 1.25rem;
+    padding-left: 1.25rem;
+    gap: 0.65rem;
+  }
+  .nav-actions .btn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 1024px) {
   .nav-links, .nav-actions .btn {
     display: none;
+  }
+  .nav-actions {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    gap: 0.75rem;
   }
   .mobile-menu-btn {
     display: block;
@@ -1601,19 +1635,6 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 5px;
     font-size: 0.7rem;
     padding: 0.35rem 0.65rem;
-  }
-}
-
-@media (max-width: 1080px) and (min-width: 769px) {
-  .nav-links {
-    gap: 1.1rem;
-  }
-  .nav-actions {
-    gap: 0.5rem;
-  }
-  .nav-actions .btn {
-    padding: 0.55rem 0.85rem;
-    font-size: 0.85rem;
   }
 }
 
