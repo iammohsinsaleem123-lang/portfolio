@@ -13,25 +13,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Main Stylesheet -->
-  <script type="module" crossorigin src="/assets/index-DUN-oLme.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BgERnU6E.css">
+  <script type="module" crossorigin src="/assets/index-iKSux_Qo.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BLgTNHgb.css">
 </head>
 <body>
 
   <!-- HEADER / STICKY NAVIGATION -->
   <header class="header" id="top">
     <div class="container nav-container">
-      <div class="brand-wrapper">
+      <a href="#home" class="brand-wrapper" aria-label="Muhammad Mohsin Saleem Portfolio">
         <div class="brand-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 6v12M6 12h12"/>
           </svg>
         </div>
         <div class="brand-text">
-          <h1>Muhammad Mohsin Saleem</h1>
-          <div class="brand-subtitle">Pharmacy Technician</div>
+          <span class="brand-name">Muhammad Mohsin Saleem</span>
+          <span class="brand-subtitle">Pharmacy Technician</span>
         </div>
-      </div>
+      </a>
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
@@ -71,17 +71,26 @@
 
   <!-- MOBILE NAVIGATION DRAWER -->
   <div id="mobileDrawer" class="mobile-nav-drawer">
-    <a href="#home" class="nav-link mobile-link">Home</a>
-    <a href="#about" class="nav-link mobile-link">About</a>
-    <a href="#experience" class="nav-link mobile-link">Experience</a>
-    <a href="#skills" class="nav-link mobile-link">Skills</a>
-    <a href="#operations" class="nav-link mobile-link">Operations</a>
-    <a href="#education" class="nav-link mobile-link">Education</a>
-    <a href="#contact" class="nav-link mobile-link">Contact</a>
-    <a href="/Muhammad_Mohsin_Saleem_CV.pdf" download="Muhammad_Mohsin_Saleem_CV.pdf" class="mobile-link" style="color: var(--medical-blue); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download CV (PDF)
-    </a>
+    <div class="mobile-links-wrap">
+      <a href="#home" class="nav-link mobile-link">Home</a>
+      <a href="#about" class="nav-link mobile-link">About</a>
+      <a href="#experience" class="nav-link mobile-link">Experience</a>
+      <a href="#skills" class="nav-link mobile-link">Skills</a>
+      <a href="#operations" class="nav-link mobile-link">Operations</a>
+      <a href="#education" class="nav-link mobile-link">Education</a>
+      <a href="#contact" class="nav-link mobile-link">Contact</a>
+    </div>
+    <div class="mobile-drawer-actions">
+      <a href="/Muhammad_Mohsin_Saleem_CV.pdf" download="Muhammad_Mohsin_Saleem_CV.pdf" class="btn btn-navy mobile-link" style="width: 100%; justify-content: center;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download CV (PDF)
+      </a>
+      <a href="#contact" class="btn btn-primary mobile-link" style="width: 100%; justify-content: center;">Contact Me</a>
+    </div>
   </div>
 
   <!-- HERO SECTION -->
