@@ -17,6 +17,19 @@
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress" style="width: 0%;"></div>
+
+  <!-- FLOATING BACKGROUND ORBS -->
+  <div class="floating-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- CURSOR GLOW EFFECT -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
   <!-- HEADER / STICKY NAVIGATION -->
   <header class="header" id="top">
     <div class="container nav-container">
@@ -97,23 +110,23 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="availability-badge">
+          <div class="availability-badge reveal">
             <span class="pulse-dot"></span>
             Professional Pharmacy Technician • Karachi, Pakistan
           </div>
 
-          <h1 class="hero-name">Muhammad Mohsin Saleem</h1>
-          <div class="hero-designation">Pharmacy Technician / Pharmacy Assistant</div>
+          <h1 class="hero-name reveal reveal-delay-1">Muhammad Mohsin Saleem</h1>
+          <div class="hero-designation reveal reveal-delay-2">Pharmacy Technician / Pharmacy Assistant</div>
 
-          <p class="hero-supporting">
+          <p class="hero-supporting reveal reveal-delay-3">
             Experienced in pharmacy operations, prescription dispensing support, inventory management, patient guidance, and medical-store supervision.
           </p>
 
-          <p class="hero-paragraph">
+          <p class="hero-paragraph reveal reveal-delay-4">
             Bringing 5 years of combined healthcare and medical-store experience across hospital and retail pharmacy environments. Dedicated to accuracy in dispensing support, strict FEFO stock rotation, temperature-sensitive cold-chain compliance, and operational discipline under qualified pharmacist supervision.
           </p>
 
-          <div class="hero-cta-group">
+          <div class="hero-cta-group reveal reveal-delay-5">
             <a href="#experience" class="btn btn-primary">
               View Professional Experience
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -130,7 +143,7 @@
           </div>
         </div>
 
-        <div class="hero-visual-card profile-card">
+        <div class="hero-visual-card profile-card reveal">
           <!-- Professional profile ring frame -->
           <div class="profile-photo-wrapper">
             <div class="profile-photo-frame">
@@ -168,7 +181,7 @@
   <section class="credential-strip">
     <div class="container">
       <div class="credential-grid">
-        <div class="credential-item">
+        <div class="credential-item reveal">
           <div class="credential-icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
@@ -178,7 +191,7 @@
           </div>
         </div>
 
-        <div class="credential-item">
+        <div class="credential-item reveal reveal-delay-1">
           <div class="credential-icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
@@ -188,7 +201,7 @@
           </div>
         </div>
 
-        <div class="credential-item">
+        <div class="credential-item reveal reveal-delay-2">
           <div class="credential-icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
@@ -204,12 +217,12 @@
   <!-- ABOUT SECTION (PROFESSIONAL PROFILE) -->
   <section class="about-section" id="about">
     <div class="container">
-      <div class="section-badge">Professional Overview</div>
-      <h2 class="section-title">Professional Profile</h2>
-      <p class="section-subtitle">A disciplined healthcare professional with a rigorous approach to pharmacy operations, patient guidance, and pharmaceutical inventory control.</p>
+      <div class="section-badge reveal">Professional Overview</div>
+      <h2 class="section-title reveal">Professional Profile</h2>
+      <p class="section-subtitle reveal">A disciplined healthcare professional with a rigorous approach to pharmacy operations, patient guidance, and pharmaceutical inventory control.</p>
 
       <div class="about-grid">
-        <div class="about-intro-text">
+        <div class="about-intro-text reveal">
           <!-- Compact profile photo for About section -->
           <div class="about-profile-row">
             <div class="about-profile-thumb-wrap">
@@ -241,7 +254,7 @@
           </div>
         </div>
 
-        <div class="expertise-panel">
+        <div class="expertise-panel reveal reveal-delay-2">
           <div class="expertise-panel-title">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             Core Areas of Expertise
@@ -304,13 +317,13 @@
   <!-- EXPERIENCE SECTION -->
   <section class="experience-section" id="experience">
     <div class="container">
-      <div class="section-badge">Career Progression</div>
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-subtitle">Chronological breakdown of positions held across hospital-affiliated and retail pharmacy environments in Karachi.</p>
+      <div class="section-badge reveal">Career Progression</div>
+      <h2 class="section-title reveal">Professional Experience</h2>
+      <p class="section-subtitle reveal">Chronological breakdown of positions held across hospital-affiliated and retail pharmacy environments in Karachi.</p>
 
       <div class="timeline-wrapper">
         <!-- POSITION 01 -->
-        <div class="timeline-card">
+        <div class="timeline-card reveal">
           <div class="timeline-badge-num">01</div>
           <div class="timeline-header">
             <div>
@@ -335,7 +348,7 @@
         </div>
 
         <!-- POSITION 02 -->
-        <div class="timeline-card">
+        <div class="timeline-card reveal">
           <div class="timeline-badge-num">02</div>
           <div class="timeline-header">
             <div>
@@ -360,7 +373,7 @@
         </div>
 
         <!-- POSITION 03 -->
-        <div class="timeline-card">
+        <div class="timeline-card reveal">
           <div class="timeline-badge-num">03</div>
           <div class="timeline-header">
             <div>
@@ -389,11 +402,11 @@
   <!-- CORE COMPETENCIES SECTION -->
   <section class="competencies-section" id="skills">
     <div class="container">
-      <div class="section-badge">Skillset Matrix</div>
-      <h2 class="section-title">Core Competencies</h2>
-      <p class="section-subtitle">Structured overview of technical, operational, and administrative capabilities derived strictly from practical experience.</p>
+      <div class="section-badge reveal">Skillset Matrix</div>
+      <h2 class="section-title reveal">Core Competencies</h2>
+      <p class="section-subtitle reveal">Structured overview of technical, operational, and administrative capabilities derived strictly from practical experience.</p>
 
-      <div class="controls-bar">
+      <div class="controls-bar reveal">
         <div class="filter-tabs" id="skillTabs">
           <button class="tab-btn active" data-category="all">All Competencies</button>
           <button class="tab-btn" data-category="operations">Pharmacy Operations</button>
@@ -411,7 +424,7 @@
 
       <div class="competencies-grid" id="competenciesGrid">
         <!-- CATEGORY 1 -->
-        <div class="category-card" data-cat="operations">
+        <div class="category-card reveal" data-cat="operations">
           <div class="category-header">
             <div class="category-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/></svg>
@@ -426,7 +439,7 @@
         </div>
 
         <!-- CATEGORY 2 -->
-        <div class="category-card" data-cat="inventory">
+        <div class="category-card reveal reveal-delay-1" data-cat="inventory">
           <div class="category-header">
             <div class="category-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
@@ -443,7 +456,7 @@
         </div>
 
         <!-- CATEGORY 3 -->
-        <div class="category-card" data-cat="compliance">
+        <div class="category-card reveal reveal-delay-2" data-cat="compliance">
           <div class="category-header">
             <div class="category-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -457,7 +470,7 @@
         </div>
 
         <!-- CATEGORY 4 -->
-        <div class="category-card" data-cat="store">
+        <div class="category-card reveal reveal-delay-3" data-cat="store">
           <div class="category-header">
             <div class="category-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
@@ -473,7 +486,7 @@
         </div>
 
         <!-- CATEGORY 5 -->
-        <div class="category-card" data-cat="technology">
+        <div class="category-card reveal reveal-delay-4" data-cat="technology">
           <div class="category-header">
             <div class="category-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
@@ -496,11 +509,11 @@
   <!-- PHARMACY OPERATIONS SHOWCASE -->
   <section class="showcase-section" id="operations">
     <div class="container">
-      <div class="section-badge">Practice Framework</div>
-      <h2 class="section-title">Pharmacy Operations</h2>
-      <p class="section-subtitle">Visual and operational breakdown of key responsibilities and standard working protocols.</p>
+      <div class="section-badge reveal">Practice Framework</div>
+      <h2 class="section-title reveal">Pharmacy Operations</h2>
+      <p class="section-subtitle reveal">Visual and operational breakdown of key responsibilities and standard working protocols.</p>
 
-      <div class="showcase-banner">
+      <div class="showcase-banner reveal">
         <img src="/assets/images/pharmacy_ops.jpg" alt="Clinical Pharmacy Operational Workstation" class="showcase-banner-img" />
         <div class="showcase-banner-caption">
           <div class="showcase-banner-title">Modern Hospital & Retail Pharmacy Workflow</div>
@@ -509,7 +522,7 @@
       </div>
 
       <div class="showcase-cards-grid">
-        <div class="showcase-card">
+        <div class="showcase-card reveal">
           <div class="showcase-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
@@ -517,7 +530,7 @@
           <p class="showcase-card-desc">Accurate medicine dispensing support under qualified pharmacist supervision, verifying medicine dosage forms and items.</p>
         </div>
 
-        <div class="showcase-card">
+        <div class="showcase-card reveal reveal-delay-1">
           <div class="showcase-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
@@ -525,7 +538,7 @@
           <p class="showcase-card-desc">Clear guidance regarding dosage timing, course completion, and medicine storage, with clinical questions referred to the pharmacist.</p>
         </div>
 
-        <div class="showcase-card">
+        <div class="showcase-card reveal reveal-delay-2">
           <div class="showcase-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
           </div>
@@ -533,7 +546,7 @@
           <p class="showcase-card-desc">Stock counting, expiry tracking, FEFO rotation, and reorder management to prevent shortages and waste.</p>
         </div>
 
-        <div class="showcase-card">
+        <div class="showcase-card reveal reveal-delay-3">
           <div class="showcase-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
           </div>
@@ -541,7 +554,7 @@
           <p class="showcase-card-desc">Routine storage checks and appropriate handling of refrigerated and temperature-sensitive pharmaceutical items.</p>
         </div>
 
-        <div class="showcase-card">
+        <div class="showcase-card reveal reveal-delay-4">
           <div class="showcase-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
           </div>
@@ -558,13 +571,13 @@
       <div class="two-col-details">
         <!-- EDUCATION -->
         <div>
-          <div class="section-badge">Academic Credentials</div>
-          <h2 class="detail-block-title">
+          <div class="section-badge reveal">Academic Credentials</div>
+          <h2 class="detail-block-title reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             Education
           </h2>
 
-          <div class="edu-card">
+          <div class="edu-card reveal">
             <div class="edu-icon-wrapper">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
             </div>
@@ -578,13 +591,13 @@
 
         <!-- LANGUAGES & IT SKILLS -->
         <div>
-          <div class="section-badge">Communication & IT</div>
-          <h2 class="detail-block-title">
+          <div class="section-badge reveal">Communication & IT</div>
+          <h2 class="detail-block-title reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             Languages & Additional Skills
           </h2>
 
-          <div class="lang-grid">
+          <div class="lang-grid reveal">
             <div class="lang-card">
               <div class="lang-name">Urdu</div>
               <div class="lang-level">Native Fluency</div>
@@ -596,7 +609,7 @@
             </div>
           </div>
 
-          <div class="it-skills-panel">
+          <div class="it-skills-panel reveal">
             <strong style="font-size: 0.875rem; color: var(--slate-900);">IT & Operational Tools:</strong>
             <div class="it-skills-tags">
               <span class="it-pill">MS Word</span>
@@ -616,12 +629,12 @@
   <!-- CONTACT SECTION -->
   <section class="contact-section" id="contact">
     <div class="container">
-      <div class="section-badge">Direct Communication</div>
-      <h2 class="section-title">Let's Connect</h2>
-      <p class="section-subtitle">Welcoming inquiries from recruiters, hospital administration, community pharmacies, and healthcare organizations looking for an experienced pharmacy technician.</p>
+      <div class="section-badge reveal">Direct Communication</div>
+      <h2 class="section-title reveal">Let's Connect</h2>
+      <p class="section-subtitle reveal">Welcoming inquiries from recruiters, hospital administration, community pharmacies, and healthcare organizations looking for an experienced pharmacy technician.</p>
 
       <div class="contact-grid">
-        <div class="contact-info-card">
+        <div class="contact-info-card reveal">
           <div>
             <div class="contact-info-title">Contact Information</div>
             <p class="contact-info-desc">Feel free to reach out directly via phone or email for professional inquiries, job opportunities, or recruitment discussions.</p>
@@ -659,12 +672,12 @@
             </div>
           </div>
 
-          <div style="font-size: 0.8125rem; color: var(--slate-300); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+          <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; position: relative;">
             Full-time availability for hospital pharmacies, medical centers, and retail stores in Karachi.
           </div>
         </div>
 
-        <div class="contact-form-card">
+        <div class="contact-form-card reveal reveal-delay-1">
           <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--slate-900); margin-bottom: 1.25rem;">Send a Message</h3>
           
           <form id="contactForm" action="https://formsubmit.co/iammohsinsaleem123@gmail.com" method="POST" novalidate>
@@ -705,7 +718,7 @@
   <!-- REFERENCES SECTION -->
   <section class="references-section">
     <div class="container">
-      <div class="references-box">
+      <div class="references-box reveal">
         References: To be furnished upon request.
       </div>
     </div>
@@ -718,12 +731,12 @@
         <div class="footer-brand">
           <h2>Muhammad Mohsin Saleem</h2>
           <p>Pharmacy Technician / Pharmacy Assistant</p>
-          <div style="font-size: 0.8125rem; color: var(--slate-400);">Karachi, Pakistan</div>
+          <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.35);">Karachi, Pakistan</div>
         </div>
 
         <div class="footer-contact-info">
           <div>Phone: 0331-2234643</div>
-          <div>Email: <a href="mailto:iammohsinsaleem123@gmail.com" style="color: var(--slate-300);">iammohsinsaleem123@gmail.com</a></div>
+          <div>Email: <a href="mailto:iammohsinsaleem123@gmail.com" style="color: rgba(255,255,255,0.5);">iammohsinsaleem123@gmail.com</a></div>
         </div>
 
         <div class="footer-links">
@@ -732,7 +745,7 @@
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
-          <a href="/Muhammad_Mohsin_Saleem_CV.pdf" download="Muhammad_Mohsin_Saleem_CV.pdf" style="color: var(--medical-blue); font-weight: 600;">Download CV (PDF)</a>
+          <a href="/Muhammad_Mohsin_Saleem_CV.pdf" download="Muhammad_Mohsin_Saleem_CV.pdf" style="color: var(--accent); font-weight: 600;">Download CV (PDF)</a>
         </div>
       </div>
 

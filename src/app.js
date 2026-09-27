@@ -1,9 +1,10 @@
 /* ==========================================================================
-   INTERACTIVE APPLICATION LOGIC
+   INTERACTIVE APPLICATION LOGIC — 3D Glassmorphism Edition
    Muhammad Mohsin Saleem — Pharmacy Technician Portfolio
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // 1. Mobile Menu Drawer Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileDrawer = document.getElementById('mobileDrawer');
@@ -83,8 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (matchesCategory && matchesSearch) {
         card.style.display = 'block';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
       } else {
-        card.style.display = 'none';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          if (!matchesCategory || !matchesSearch) {
+            card.style.display = 'none';
+          }
+        }, 300);
       }
     });
   }
@@ -198,5 +207,154 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.hideTimeout = setTimeout(() => {
       toast.classList.remove('show');
     }, 3500);
+  }
+
+  // ==========================================================================
+  // 8. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+  // ==========================================================================
+  const revealElements = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target); // only animate once
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback: show all immediately
+    revealElements.forEach(el => el.classList.add('visible'));
+  }
+
+  // ==========================================================================
+  // 9. SCROLL PROGRESS BAR
+  // ==========================================================================
+  const scrollProgress = document.getElementById('scrollProgress');
+
+  function updateScrollProgress() {
+    if (!scrollProgress) return;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = scrollPercent + '%';
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+  // ==========================================================================
+  // 10. CURSOR GLOW EFFECT (Desktop only)
+  // ==========================================================================
+  const cursorGlow = document.getElementById('cursorGlow');
+
+  if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
+    let glowX = 0, glowY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      glowX = e.clientX;
+      glowY = e.clientY;
+      cursorGlow.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.classList.remove('active');
+    });
+
+    function animateGlow() {
+      currentX += (glowX - currentX) * 0.08;
+      currentY += (glowY - currentY) * 0.08;
+      cursorGlow.style.left = currentX + 'px';
+      cursorGlow.style.top = currentY + 'px';
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+  }
+
+  // ==========================================================================
+  // 11. 3D TILT EFFECT ON GLASS CARDS (Desktop only)
+  // ==========================================================================
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const tiltCards = document.querySelectorAll('.category-card, .showcase-card, .timeline-card');
+
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+      });
+    });
+  }
+
+  // ==========================================================================
+  // 12. SMOOTH HEADER BACKDROP ON SCROLL
+  // ==========================================================================
+  const header = document.querySelector('.header');
+  
+  function updateHeaderOnScroll() {
+    if (!header) return;
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 4px 40px rgba(5, 150, 105, 0.08)';
+    } else {
+      header.style.boxShadow = '0 4px 30px rgba(5, 150, 105, 0.04)';
+    }
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+
+  // ==========================================================================
+  // 13. COUNTER ANIMATION FOR CREDENTIAL VALUES
+  // ==========================================================================
+  const credentialVals = document.querySelectorAll('.credential-val');
+
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const text = el.textContent.trim();
+          const numMatch = text.match(/^(\d+)/);
+
+          if (numMatch) {
+            const target = parseInt(numMatch[1]);
+            const suffix = text.replace(/^\d+/, '');
+            let current = 0;
+            const duration = 1500;
+            const step = target / (duration / 16);
+
+            function animate() {
+              current += step;
+              if (current >= target) {
+                el.textContent = target + suffix;
+              } else {
+                el.textContent = Math.floor(current) + suffix;
+                requestAnimationFrame(animate);
+              }
+            }
+            animate();
+          }
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    credentialVals.forEach(el => counterObserver.observe(el));
   }
 });
