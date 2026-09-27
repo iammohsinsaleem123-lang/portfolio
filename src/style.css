@@ -2394,8 +2394,231 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, #00f2fe, #10b981, #a855f7);
   z-index: 1001;
   transition: width 0.1s linear;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
 }
+
+/* ==========================================================================
+   3D HOLOGRAPHIC WEBGL & SPECULAR GLARE SYSTEM
+   ========================================================================== */
+.hero-visual-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-holo-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(0, 242, 254, 0.22);
+  border-radius: 28px;
+  padding: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 242, 254, 0.12);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
+}
+
+[data-theme="light"] .hero-holo-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.1), 0 0 25px rgba(0, 242, 254, 0.15);
+}
+
+.holo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+.holo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.1);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+}
+
+.holo-modes {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.model-mode-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .model-mode-btn {
+  color: #e2e8f0;
+}
+
+.model-mode-btn:hover {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: rgba(0, 242, 254, 0.4);
+  color: #00f2fe;
+}
+
+.model-mode-btn.active {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(16, 185, 129, 0.2));
+  border-color: #00f2fe;
+  color: #00f2fe;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+}
+
+#threeHeroContainer {
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, rgba(0, 242, 254, 0.04) 0%, transparent 70%);
+  cursor: grab;
+  touch-action: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#threeHeroContainer:active {
+  cursor: grabbing;
+}
+
+.holo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.holo-drag-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00f2fe;
+  font-weight: 500;
+}
+
+/* Specular Hologram Glare Layer for All 3D Tilt Cards */
+.card-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  mix-blend-mode: screen;
+  z-index: 10;
+}
+
+/* 3D Depth Parallax Pop on Hover */
+.category-card,
+.showcase-card,
+.timeline-card,
+.profile-card,
+.hero-holo-card {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.category-card .card-icon-box,
+.showcase-card .showcase-icon-box,
+.timeline-card .badge,
+.profile-badge {
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+}
+
+.category-title,
+.showcase-title,
+.profile-nameplate-name {
+  transform: translateZ(20px);
+}
+
+/* Dual Floating Profile Card in Hero */
+.hero-profile-embed {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .hero-profile-embed {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.hero-profile-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #00f2fe;
+  object-fit: cover;
+  box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
+  flex-shrink: 0;
+}
+
+.hero-profile-info {
+  flex: 1;
+}
+
+.hero-profile-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.15rem;
+}
+
+.hero-profile-role {
+  font-size: 0.825rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.hero-profile-loc {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+@media (max-width: 991px) {
+  #threeHeroContainer {
+    height: 260px;
+  }
+}
+

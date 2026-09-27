@@ -1,9 +1,14 @@
 /* ==========================================================================
-   INTERACTIVE APPLICATION LOGIC — 3D Glassmorphism Edition
+   INTERACTIVE APPLICATION LOGIC — 3D Holographic WebGL Edition
    Muhammad Mohsin Saleem — Pharmacy Technician Portfolio
    ========================================================================== */
 
+import { initThreeScene } from './threeScene.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Initialize Interactive 3D Three.js WebGL Scene
+  initThreeScene();
 
   // 1. Mobile Menu Drawer Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -98,79 +103,115 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterSkills();
+  if (tabBtns.length > 0) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterSkills();
+      });
     });
-  });
+  }
 
   if (searchInput) {
     searchInput.addEventListener('input', filterSkills);
   }
 
-  // 5. Contact Form Submission & Direct Email Integration
-  const contactForm = document.getElementById('contactForm');
-  const formSuccess = document.getElementById('formSuccess');
-  const submitBtn = document.getElementById('submitBtn');
-  const submitBtnText = document.getElementById('submitBtnText');
+  // 5. Interactive Operations Protocol Accordion
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      const message = document.getElementById('userMessage').value.trim();
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const isOpen = item.classList.contains('active');
 
-      if (!name || !email || !message) {
-        alert('Please fill out all required fields (Name, Email, and Message) before submitting.');
-        return;
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        const icon = i.querySelector('.accordion-icon');
+        if (icon) icon.textContent = '+';
+      });
+
+      if (!isOpen) {
+        item.classList.add('active');
+        const icon = header.querySelector('.accordion-icon');
+        if (icon) icon.textContent = '−';
       }
+    });
+  });
 
-      // Show sending state
-      if (submitBtnText) submitBtnText.textContent = 'Sending Message...';
-      if (submitBtn) submitBtn.disabled = true;
+  // 6. Interactive Dispensing Dosage Verification Tool
+  const calcBtn = document.getElementById('calculateDosageBtn');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      const weight = parseFloat(document.getElementById('calcWeight')?.value || 0);
+      const dosePerKg = parseFloat(document.getElementById('calcDosePerKg')?.value || 0);
+      const concentration = parseFloat(document.getElementById('calcConcentration')?.value || 0);
+      const resultBox = document.getElementById('calcResult');
 
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/iammohsinsaleem123@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            _subject: `New Portfolio Inquiry from ${name}`,
-            message: message,
-            _template: 'table'
-          })
-        });
+      if (weight > 0 && dosePerKg > 0 && concentration > 0) {
+        const totalDoseMg = weight * dosePerKg;
+        const volumeMl = totalDoseMg / concentration;
 
-        const data = await response.json();
-
-        if (response.ok || data.success === 'true') {
-          if (formSuccess) {
-            formSuccess.style.display = 'block';
-          }
-          contactForm.reset();
-        } else {
-          // Standard form submit fallback if AJAX is blocked
-          contactForm.submit();
+        if (resultBox) {
+          resultBox.innerHTML = `
+            <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid var(--accent); padding: 1.25rem; border-radius: 12px; margin-top: 1rem; backdrop-filter: blur(12px);">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Dispensing Calculation Verified
+              </div>
+              <div style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.25rem;">
+                Target Dose: <strong>${totalDoseMg.toFixed(2)} mg</strong>
+              </div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">
+                Volume to Dispense: ${volumeMl.toFixed(2)} mL
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                * Standard protocol requires double-check verification by Supervising Pharmacist before patient release.
+              </div>
+            </div>
+          `;
         }
-      } catch (err) {
-        console.warn('FormSubmit AJAX fallback triggered:', err);
-        contactForm.submit();
-      } finally {
-        if (submitBtnText) submitBtnText.textContent = 'Send Message';
-        if (submitBtn) submitBtn.disabled = false;
+      } else {
+        if (resultBox) {
+          resultBox.innerHTML = `
+            <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid var(--danger); padding: 1rem; border-radius: 12px; margin-top: 1rem; color: var(--danger); font-size: 0.9rem; backdrop-filter: blur(12px);">
+              ⚠️ Please input valid numerical values for patient weight, prescribed mg/kg, and medication concentration.
+            </div>
+          `;
+        }
       }
     });
   }
 
-  // 6. Print Resume Handler
+  // 7. Interactive Cold-Chain Temperature Logger Simulation
+  const logTempBtn = document.getElementById('logTempBtn');
+  if (logTempBtn) {
+    logTempBtn.addEventListener('click', () => {
+      const tempInput = document.getElementById('tempReading');
+      const temp = parseFloat(tempInput?.value || 0);
+      const tempStatus = document.getElementById('tempStatus');
+
+      if (!tempStatus) return;
+
+      if (temp >= 2 && temp <= 8) {
+        tempStatus.innerHTML = `
+          <div style="padding: 1rem; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent); border-radius: 10px; color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; backdrop-filter: blur(12px);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            ${temp.toFixed(1)}°C — Optimal Range (2°C – 8°C). Biologicals & Vaccines Compliant.
+          </div>
+        `;
+      } else {
+        tempStatus.innerHTML = `
+          <div style="padding: 1rem; background: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); border-radius: 10px; color: var(--danger); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; backdrop-filter: blur(12px);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            ${temp.toFixed(1)}°C — CRITICAL EXCURSION! Quarantine stock & notify In-Charge Pharmacist immediately.
+          </div>
+        `;
+      }
+    });
+  }
+
+  // 8. Print Resume Trigger
   const printBtn = document.getElementById('printResumeBtn');
   if (printBtn) {
     printBtn.addEventListener('click', () => {
@@ -178,93 +219,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. CV Download Notification Toast
-  const downloadLinks = document.querySelectorAll('a[download]');
-  downloadLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      showDownloadToast('Downloading Muhammad Mohsin Saleem\'s CV...');
-    });
-  });
-
-  function showDownloadToast(message) {
-    let toast = document.getElementById('downloadToast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'downloadToast';
-      toast.className = 'download-toast';
-      document.body.appendChild(toast);
-    }
-    toast.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      <span>${message}</span>
-    `;
-    toast.classList.add('show');
-    clearTimeout(toast.hideTimeout);
-    toast.hideTimeout = setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3500);
-  }
-
-  // ==========================================================================
-  // 8. SCROLL REVEAL ANIMATIONS (Intersection Observer)
-  // ==========================================================================
-  const revealElements = document.querySelectorAll('.reveal');
-
+  // 9. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
   if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target); // only animate once
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1,
+      threshold: 0.12,
       rootMargin: '0px 0px -40px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
   } else {
-    // Fallback: show all immediately
-    revealElements.forEach(el => el.classList.add('visible'));
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 
-  // ==========================================================================
-  // 9. SCROLL PROGRESS BAR
-  // ==========================================================================
-  const scrollProgress = document.getElementById('scrollProgress');
-
-  function updateScrollProgress() {
-    if (!scrollProgress) return;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    scrollProgress.style.width = scrollPercent + '%';
+  // 10. REAL-TIME SCROLL PROGRESS BAR
+  const progressBar = document.getElementById('scrollProgress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+    }, { passive: true });
   }
 
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-
-  // ==========================================================================
-  // 10. CURSOR GLOW EFFECT (Desktop only)
-  // ==========================================================================
+  // 11. DYNAMIC CURSOR GLOW EFFECT (Desktop pointer: fine)
   const cursorGlow = document.getElementById('cursorGlow');
-
   if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
     let glowX = 0, glowY = 0;
     let currentX = 0, currentY = 0;
 
-    document.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
       glowX = e.clientX;
       glowY = e.clientY;
-      cursorGlow.classList.add('active');
-    });
-
-    document.addEventListener('mouseleave', () => {
-      cursorGlow.classList.remove('active');
     });
 
     function animateGlow() {
@@ -278,12 +273,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 11. 3D TILT EFFECT ON GLASS CARDS (Desktop only)
+  // 12. ADVANCED 3D HOLOGRAPHIC TILT & SPECULAR GLARE SYSTEM
   // ==========================================================================
   if (window.matchMedia('(pointer: fine)').matches) {
-    const tiltCards = document.querySelectorAll('.category-card, .showcase-card, .timeline-card');
+    const tiltCards = document.querySelectorAll(
+      '.category-card, .showcase-card, .timeline-card, .profile-card, .hero-holo-card, .credential-item'
+    );
 
     tiltCards.forEach(card => {
+      // Create dynamic holographic glare layer if not present
+      if (!card.querySelector('.card-glare')) {
+        const glare = document.createElement('div');
+        glare.className = 'card-glare';
+        card.appendChild(glare);
+      }
+
+      const glareEl = card.querySelector('.card-glare');
+
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -291,39 +297,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -4;
-        const rotateY = ((x - centerX) / centerX) * 4;
+        // Enhanced tilt amplitude with smooth perspective
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        const percentX = (x / rect.width) * 100;
+        const percentY = (y / rect.height) * 100;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.025, 1.025, 1.025) translateY(-8px)`;
+        
+        // Dynamic holographic glare reflection
+        if (glareEl) {
+          glareEl.style.opacity = '1';
+          glareEl.style.background = `radial-gradient(circle at ${percentX}% ${percentY}%, rgba(0, 242, 254, 0.28) 0%, rgba(16, 185, 129, 0.15) 35%, rgba(255, 255, 255, 0) 70%)`;
+        }
+
+        // Dynamic 3D lighting shadow
+        const shadowX = -rotateY * 1.5;
+        const shadowY = rotateX * 1.5 + 15;
+        card.style.boxShadow = `${shadowX}px ${shadowY}px 35px rgba(0, 242, 254, 0.14), 0 20px 40px rgba(0, 0, 0, 0.25)`;
       });
 
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateY(0)';
+        card.style.boxShadow = '';
+        if (glareEl) {
+          glareEl.style.opacity = '0';
+        }
       });
     });
   }
 
-  // ==========================================================================
-  // 12. SMOOTH HEADER BACKDROP ON SCROLL
-  // ==========================================================================
+  // 13. 3D Model Mode Switcher Buttons
+  const modeBtns = document.querySelectorAll('.model-mode-btn');
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.getAttribute('data-mode');
+      if (window.switchThreeMode) {
+        window.switchThreeMode(mode);
+      }
+    });
+  });
+
+  // 14. HEADER BACKDROP & CREDENTIAL COUNTER ANIMATIONS
   const header = document.querySelector('.header');
-  
   function updateHeaderOnScroll() {
     if (!header) return;
     if (window.scrollY > 50) {
-      header.style.boxShadow = '0 4px 40px rgba(5, 150, 105, 0.08)';
+      header.style.boxShadow = '0 8px 32px rgba(0, 242, 254, 0.12)';
     } else {
       header.style.boxShadow = '0 4px 30px rgba(5, 150, 105, 0.04)';
     }
   }
-
   window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
 
-  // ==========================================================================
-  // 13. COUNTER ANIMATION FOR CREDENTIAL VALUES
-  // ==========================================================================
   const credentialVals = document.querySelectorAll('.credential-val');
-
   if ('IntersectionObserver' in window) {
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

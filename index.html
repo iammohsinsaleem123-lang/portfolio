@@ -143,33 +143,50 @@
           </div>
         </div>
 
-        <div class="hero-visual-card profile-card reveal">
-          <!-- Professional profile ring frame -->
-          <div class="profile-photo-wrapper">
-            <div class="profile-photo-frame">
-              <img
-                src="/assets/images/profile_photo.jpg"
-                alt="Muhammad Mohsin Saleem — Professional Pharmacy Technician"
-                class="profile-photo-img"
-              />
+        <div class="hero-visual-col reveal">
+          <!-- 3D HOLOGRAPHIC WEBGL LAB SIMULATOR -->
+          <div class="hero-holo-card">
+            <div class="holo-header">
+              <span class="holo-badge">
+                <span class="pulse-dot"></span>
+                3D Interactive Lab
+              </span>
+              <div class="holo-modes" aria-label="3D Model Selector">
+                <button class="model-mode-btn active" data-mode="capsule" title="3D Pharmaceutical Capsule">💊 Capsule</button>
+                <button class="model-mode-btn" data-mode="molecule" title="Molecular Structure">🧬 Molecule</button>
+                <button class="model-mode-btn" data-mode="rings" title="Precision Orbitals">🌐 Orbitals</button>
+              </div>
             </div>
-            <!-- Floating credential badges -->
-            <div class="profile-badge profile-badge--tl">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Verified Professional
-            </div>
-            <div class="profile-badge profile-badge--br">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              5 Yrs Experience
+
+            <!-- THREE.JS WEBGL 3D CANVAS VIEWPORT -->
+            <div id="threeHeroContainer" aria-label="Interactive 3D Pharmacy Simulation Canvas"></div>
+
+            <div class="holo-footer">
+              <div class="holo-drag-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                Drag to rotate 360°
+              </div>
+              <div>Cold-Chain: 2°C – 8°C Compliant</div>
             </div>
           </div>
-          <!-- Nameplate beneath photo -->
-          <div class="profile-nameplate">
-            <div class="profile-nameplate-name">Muhammad Mohsin Saleem</div>
-            <div class="profile-nameplate-role">Pharmacy Technician / Pharmacy Assistant</div>
-            <div class="profile-nameplate-location">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              Karachi, Pakistan
+
+          <!-- VERIFIED CLINICAL PROFILE CARD EMBED -->
+          <div class="hero-profile-embed">
+            <img
+              src="/assets/images/profile_photo.jpg"
+              alt="Muhammad Mohsin Saleem — Pharmacy Technician"
+              class="hero-profile-thumb"
+            />
+            <div class="hero-profile-info">
+              <div class="hero-profile-name">Muhammad Mohsin Saleem</div>
+              <div class="hero-profile-role">Professional Pharmacy Technician • 5 Yrs Exp.</div>
+              <div class="hero-profile-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Karachi, Pakistan (Medask & CMH Malir)
+              </div>
             </div>
           </div>
         </div>
